@@ -1,10 +1,3 @@
-# /// script
-# requires-python = ">=3.10"
-# dependencies = [
-#     "huggingface-hub",
-#     "rich",
-# ]
-# ///
 import argparse
 import sys
 
