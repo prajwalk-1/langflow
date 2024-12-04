@@ -9,10 +9,7 @@ from fastapi.responses import JSONResponse, StreamingResponse
 from langflow.logging.logger import log_buffer
 
 log_router = APIRouter(tags=["Log"])
-
-
 NUMBER_OF_NOT_SENT_BEFORE_KEEPALIVE = 5
-
 
 async def event_generator(request: Request):
     global log_buffer  # noqa: PLW0602
@@ -50,7 +47,6 @@ async def event_generator(request: Request):
 
         await asyncio.sleep(1)
 
-
 @log_router.get("/logs-stream")
 async def stream_logs(
     request: Request,
@@ -66,9 +62,7 @@ async def stream_logs(
             status_code=HTTPStatus.NOT_IMPLEMENTED,
             detail="Log retrieval is disabled",
         )
-
     return StreamingResponse(event_generator(request), media_type="text/event-stream")
-
 
 @log_router.get("/logs")
 async def logs(
